@@ -1,13 +1,30 @@
-# MiniGPT-Studio-Build-Own-GPT-Style-Language-Model
-Build a GPT-style language model from scratch using PyTorch, with a FastAPI web interface for document upload, retrieval, and custom model training.llm gpt pytorch transformer deep-learning nlp python fastapi machine-learning rag
-Developed a GPT-style decoder-only Transformer language model from scratch using PyTorch.
+# MiniGPT Studio
 
-Implemented causal self-attention, token embeddings, positional embeddings, Transformer blocks, and next-token prediction.
+A local FastAPI dashboard for uploading TXT/PDF/DOCX documents, searching their contents, and training a small GPT-style character-level Transformer.
 
-Built a FastAPI-based web dashboard supporting TXT, PDF, and DOCX document uploads and automated text extraction.
+## Requirements
+Python 3.11 or 3.12 is recommended. Install dependencies in a virtual environment:
 
-Implemented TF-IDF-based document retrieval to identify relevant passages from uploaded knowledge sources.
+```bash
+cd MiniGPT-Studio
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+uvicorn app:app --reload
+```
 
-Developed a custom training pipeline to prepare document-based datasets, train the model, and save model checkpoints.
+Open http://127.0.0.1:8000
 
-Integrated a web-based interface for document management, training monitoring, and document querying.
+## Use
+1. Upload TXT, searchable PDF, or DOCX files.
+2. Ask questions to retrieve matching passages immediately.
+3. Click Start training to combine extracted text into `data/train.txt` and train the small model.
+4. Model checkpoint is saved at `checkpoints/minigpt.pt`.
+
+## Limitations
+- Legacy `.doc` is not supported; convert it to `.docx`.
+- Scanned/image-only PDFs require OCR before upload.
+- Document chat is TF-IDF retrieval, not a generative LLM response.
+- The included character-level Transformer is an educational toy model, not comparable to ChatGPT. A few documents will not create a capable assistant; retrieval is usually better for small personal document collections.
+- Training can take time and may be memory-intensive. Stop the server with Ctrl+C.
