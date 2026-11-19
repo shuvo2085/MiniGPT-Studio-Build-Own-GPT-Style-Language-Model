@@ -21,10 +21,3 @@ Open http://127.0.0.1:8000
 2. Ask questions to retrieve matching passages immediately.
 3. Click Start training to combine extracted text into `data/train.txt` and train the small model.
 4. Model checkpoint is saved at `checkpoints/minigpt.pt`.
-
-## Limitations
-- Legacy `.doc` is not supported; convert it to `.docx`.
-- Scanned/image-only PDFs require OCR before upload.
-- Document chat is TF-IDF retrieval, not a generative LLM response.
-- The included character-level Transformer is an educational toy model, not comparable to ChatGPT. A few documents will not create a capable assistant; retrieval is usually better for small personal document collections.
-- Training can take time and may be memory-intensive. Stop the server with Ctrl+C.
